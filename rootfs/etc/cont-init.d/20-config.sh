@@ -11,7 +11,15 @@ if [[ ! -L /etc/periodic/15min/rclone && ! -f /srv/rclone/config/cron-15mins ]];
 
 cat > /srv/rclone/config/cron-15mins <<DELIM
 #!/bin/sh
-LANG=C.UTF-8 /usr/bin/rclone --config /srv/rclone/config/rclone.conf
+# GLOBAL OPTS
+RCLONE_OPTS="--config /srv/rclone/config/rclone.conf"
+SYNC_OPTS=""
+
+# SYNC ENTRY OPTS
+#SRC="/opt/mediadepot/apps/couchpotato"
+#DEST="gdrive:/depot_backup/couchpotato"
+#echo "INFO: Starting rclone sync \$SRC \$DEST \$RCLONE_OPTS \$SYNC_OPTS"
+#LANG=C.UTF-8 /usr/bin/rclone sync \$SRC \$DEST \$RCLONE_OPTS \$SYNC_OPTS
 DELIM
 chmod +x /srv/rclone/config/cron-15mins
 
